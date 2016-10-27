@@ -1,4 +1,5 @@
 var THREE = require('Three');
+var Stats = require('stats-js');
 
 // Scene
 var Camera = require('./scene/camera');
@@ -12,14 +13,30 @@ var Main = function() {
   this.renderTargets = [];
   this.setupScene();
   this.setupElements();
+  this.setupStats();
+
   this.animationLoop();
 };
 
 Main.constructor = Main;
 
 Main.prototype.animationLoop = function() {
+  this.stats.begin();
   requestAnimationFrame(this.animationLoop.bind(this));
   this.render();
+  this.stats.end();
+};
+
+Main.prototype.setupStats = function() {
+  this.stats = new Stats();
+  this.stats.setMode(1); // 0: fps, 1: ms
+
+  // Align top-left
+  this.stats.domElement.style.position = 'absolute';
+  this.stats.domElement.style.left = '0px';
+  this.stats.domElement.style.top = '0px';
+
+  document.body.appendChild( this.stats.domElement );
 };
 
 Main.prototype.setupScene = function() {
