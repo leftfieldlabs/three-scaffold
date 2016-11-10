@@ -1,6 +1,6 @@
 ![N|Solid](http://www.leftfieldlabs.com/assets/images/logo-main-inverted.png)
 
-# Interactive globe showing custom data-sets
+# Scaffold template for creating three.js based content.
 ---
 ### Some description will go here
  ---   
@@ -21,4 +21,4 @@ $ gulp build
   1. Run the sync command.
 ```sh
 $ gulp serve
-``` 
+```
